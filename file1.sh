@@ -3,5 +3,9 @@
 source "${HOME}/conda/etc/profile.d/conda.sh"
 conda init
 conda activate
-cd chipyard/
-./build-setup.sh riscv-tools --help
+conda install -y -n base conda-libmamba-solver
+conda config --set solver libmamba
+conda install -y -n base conda-lock==1.4.0
+conda activate base
+
+#cd chipyard/
