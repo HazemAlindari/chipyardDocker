@@ -1,0 +1,21 @@
+name: Docker Image CI
+on: 
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu- latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: docker login 
+      env:
+        DOCKER_USER: {{secrets.DOCKER_USERNAME)}
+        DOCKER_PASSWORD: {{secrets.DOCKER_PASSWORD)}
+      run: 
+        docker login -u SDOCKER_USER -P SDOCKER_PASSWORD
+    - name: Build the Docker image 
+      run: docker build . --progress plain --tag hazemjaki/chipyard:S{{ github.sha }}
+    
+    - name: Docker Push
+      run: docker push hazemjaki/chipyard:S{{ github.sha }}
