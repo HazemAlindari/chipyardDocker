@@ -1,4 +1,4 @@
-This docker image is supposed to setup chipyard (1.11.0) with tools (except scope and marshal)
+This docker image is supposed to setup chipyard (1.11.0) with tools (except firesim and marshal)
 
 The container run on amd64 and is tested on apple silicon as well.
 
