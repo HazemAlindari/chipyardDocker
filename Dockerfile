@@ -41,7 +41,7 @@ WORKDIR /home/hazem
 #ENV PATH /home/hazem/conda/condabin:$PATH
 
 RUN git clone https://github.com/HazemAlindari/chipyardDocker.git
-#SHELL ["/bin/bash", "-cl"]
+SHELL ["/bin/bash", "-cl"]
 RUN . chipyardDocker/installChipyardWithTools.sh
 
 ENTRYPOINT ["chipyardDocker/entrypoint.sh"]
