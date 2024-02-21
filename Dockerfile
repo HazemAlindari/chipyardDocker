@@ -2,6 +2,7 @@
 
 FROM --platform=linux/amd64 ubuntu
 
+#setup dependencies 
 ENV TZ=Europe/Berlin
 ENV LANG en_US.utf8
 ENV LANGUAGE en_US:en
@@ -14,11 +15,10 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y -f \
   && rm -rf /var/lib/apt/lists/* 
 RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
 
+# Create the user
 ARG USERNAME=hazem
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
-
-# Create the user
 RUN groupadd --gid $USER_GID $USERNAME \
     && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
     #
@@ -27,21 +27,13 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && apt-get install -y sudo \
     && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME
-
-
 USER $USERNAME
-
 WORKDIR /home/hazem
 
-#ENV CONDA_EXE='/home/hazem/conda/bin/conda'
-#ENV _CE_M=''
-#ENV _CE_CONDA=''
-#ENV CONDA_SHLVL='0'
-#ENV CONDA_PYTHON_EXE='/home/hazem/conda/bin/python'
-#ENV PATH /home/hazem/conda/condabin:$PATH
-
+#install chipyard
 RUN git clone https://github.com/HazemAlindari/chipyardDocker.git
 SHELL ["/bin/bash", "-cl"]
 RUN . chipyardDocker/installChipyardWithTools.sh
 
+#make the entry ready
 ENTRYPOINT ["chipyardDocker/entrypoint.sh"]
