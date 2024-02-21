@@ -15,7 +15,7 @@ jobs:
       run: 
         docker login -u $SDOCKERUSER -p $SDOCKERPASSWORD
     - name: Build the Docker image 
-      run: docker build . --progress plain --tag hazemjaki/chipyard:S{{ github.sha }}
+      run: docker build --progress plain -t hazemjaki/chipyard .
     
     - name: Docker Push
-      run: docker push hazemjaki/chipyard:S{{ github.sha }}
+      run: docker push hazemjaki/chipyard
