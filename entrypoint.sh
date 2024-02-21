@@ -6,4 +6,5 @@
 source "${HOME}/conda/etc/profile.d/conda.sh"
 conda activate
 source chipyard/env.sh
+cd chipyard
 exec "$@"
