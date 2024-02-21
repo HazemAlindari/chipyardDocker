@@ -1,5 +1,3 @@
-#ARG ARCH=amd64
-
 FROM --platform=linux/amd64 ubuntu
 
 #setup dependencies 
