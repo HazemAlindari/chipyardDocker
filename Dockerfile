@@ -37,18 +37,15 @@ WORKDIR /home/hazem
 RUN wget -O Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
 RUN bash Miniforge3.sh -b -p "${HOME}/conda"
 
-RUN . "${HOME}/conda/etc/profile.d/conda.sh"
 ENV CONDA_EXE='/home/hazem/conda/bin/conda'
 ENV _CE_M=''
 ENV _CE_CONDA=''
 ENV CONDA_SHLVL='0'
 ENV CONDA_PYTHON_EXE='/home/hazem/conda/bin/python'
 ENV PATH /home/hazem/conda/condabin:$PATH
-RUN . /home/hazem/conda/etc/profile.d/conda.sh
 
 RUN git clone https://github.com/HazemAlindari/chipyardDocker.git
-RUN git clone https://github.com/ucb-bar/chipyard.git
-SHELL ["/bin/bash", "-cl"]
+#SHELL ["/bin/bash", "-cl"]
 RUN . chipyardDocker/installChipyardWithTools.sh
 
 ENTRYPOINT ["chipyardDocker/entrypoint.sh"]
