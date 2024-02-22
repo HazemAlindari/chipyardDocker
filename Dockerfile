@@ -37,7 +37,7 @@ RUN . chipyardDocker/installCondaPacks.sh
 RUN . chipyardDocker/installChipyardWithTools.sh
 
 #install verilator
-RUN apt-get install verilator
+#RUN apt-get install verilator
 
 #make the entry ready
 ENTRYPOINT ["chipyardDocker/entrypoint.sh"]
