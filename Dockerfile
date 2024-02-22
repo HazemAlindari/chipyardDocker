@@ -6,8 +6,9 @@ ENV LANG en_US.utf8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y -f \
-  wget curl verilator locales git rsync vim bsdmainutils gdb time \
+  wget curl locales git rsync vim bsdmainutils gdb time \
   autoconf automake autotools-dev libmpc-dev libmpfr-dev python3 ninja-build libgmp-dev gawk gperf build-essential bison flex texinfo libgoogle-perftools-dev libtool patchutils bc zlib1g-dev libexpat-dev libboost-iostreams-dev libboost-program-options-dev libboost-log-dev \
   && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 \
   && rm -rf /var/lib/apt/lists/* 
@@ -30,7 +31,15 @@ WORKDIR /home/hazem
 
 #install chipyard
 RUN git clone https://github.com/HazemAlindari/chipyardDocker.git
-SHELL ["/bin/bash", "-cl"]
+SHELL ["/bin/bash", "-c"]
+
+#COPY installMiniforge3.sh /home/hazem/chipyardDocker/installMiniforge3.sh
+RUN . chipyardDocker/installMiniforge3.sh
+
+#COPY installCondaPacks.sh /home/hazem/chipyardDocker/installCondaPacks.sh
+RUN . chipyardDocker/installCondaPacks.sh
+
+#COPY installChipyardWithTools.sh /home/hazem/chipyardDocker/installChipyardWithTools.sh
 RUN . chipyardDocker/installChipyardWithTools.sh
 
 #make the entry ready
