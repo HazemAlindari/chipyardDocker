@@ -8,14 +8,15 @@ jobs:
     runs-on: self-hosted
     steps:
     - uses: actions/checkout@v2
-    - name: docker login 
-      env:
-        SDOCKERUSER: ${{secrets.DOCKER_USERNAME}}
-        SDOCKERPASSWORD: ${{secrets.DOCKER_PASSWORD}}
-      run: 
-        docker login -u $SDOCKERUSER -p $SDOCKERPASSWORD
+    
+    #- name: docker login 
+    #  env:
+    #    SDOCKERUSER: ${{secrets.DOCKER_USERNAME}}
+    #    SDOCKERPASSWORD: ${{secrets.DOCKER_PASSWORD}}
+    #  run: 
+    #    docker login -u $SDOCKERUSER -p $SDOCKERPASSWORD
     - name: Build the Docker image 
       run: docker build --progress plain -t hazemjaki/chipyard .
     
-    - name: Docker Push
-      run: docker push hazemjaki/chipyard
+    #- name: Docker Push
+    #  run: docker push hazemjaki/chipyard
