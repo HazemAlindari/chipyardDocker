@@ -7,4 +7,4 @@ After it's done, use the command: "docker run -it chipyard bash" from anywhere. 
 
 To Do:
 1. connect the image to an external storage to allow development on host and only build on container.
-2. make the image install latest chipyard release automatically 
+2. make the image install latest chipyard release automatically (might be already fixed)
