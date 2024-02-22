@@ -32,14 +32,8 @@ WORKDIR /home/hazem
 #install chipyard
 RUN git clone https://github.com/HazemAlindari/chipyardDocker.git
 SHELL ["/bin/bash", "-c"]
-
-#COPY installMiniforge3.sh /home/hazem/chipyardDocker/installMiniforge3.sh
 RUN . chipyardDocker/installMiniforge3.sh
-
-#COPY installCondaPacks.sh /home/hazem/chipyardDocker/installCondaPacks.sh
 RUN . chipyardDocker/installCondaPacks.sh
-
-#COPY installChipyardWithTools.sh /home/hazem/chipyardDocker/installChipyardWithTools.sh
 RUN . chipyardDocker/installChipyardWithTools.sh
 
 #make the entry ready
