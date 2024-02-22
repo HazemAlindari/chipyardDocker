@@ -8,7 +8,7 @@ ENV LC_ALL en_US.UTF-8
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y -f \
-  wget curl locales git rsync vim bsdmainutils gdb time \
+  wget verilator curl locales git rsync vim bsdmainutils gdb time \
   autoconf automake autotools-dev libmpc-dev libmpfr-dev python3 ninja-build libgmp-dev gawk gperf build-essential bison flex texinfo libgoogle-perftools-dev libtool patchutils bc zlib1g-dev libexpat-dev libboost-iostreams-dev libboost-program-options-dev libboost-log-dev \
   && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 \
   && rm -rf /var/lib/apt/lists/* 
