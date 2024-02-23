@@ -37,4 +37,4 @@ RUN . chipyardDocker/installCondaPacks.sh
 RUN . chipyardDocker/installChipyardWithTools.sh
 
 #make the entry ready
-ENTRYPOINT ["chipyardDocker/entrypoint.sh",/bin/bash]
+ENTRYPOINT ["chipyardDocker/entrypoint.sh","/bin/bash"]
