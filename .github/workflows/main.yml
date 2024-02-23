@@ -7,7 +7,7 @@ jobs:
   build:
     runs-on: self-hosted
     steps:
-    - uses: actions/checkout
+    - uses: actions/checkout@v4
     
     - name: docker login 
       env:
