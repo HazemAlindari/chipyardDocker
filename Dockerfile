@@ -35,6 +35,7 @@ RUN cd chipyardDocker && git fetch &&git checkout ChipyardOnDevice
 SHELL ["/bin/bash", "-c"]
 RUN . chipyardDocker/installMiniforge3.sh
 RUN . chipyardDocker/installCondaPacks.sh
+RUN . chipyardDocker/activateConda.sh
 
 #make the entry ready
 ENTRYPOINT ["chipyardDocker/entrypoint.sh","/bin/bash"]
