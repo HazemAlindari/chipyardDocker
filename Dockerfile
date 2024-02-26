@@ -31,10 +31,10 @@ WORKDIR /home/hazem
 
 #install chipyard
 RUN git clone https://github.com/HazemAlindari/chipyardDocker.git
+RUN cd chipyardDocker && git checkout ChipyardOnDevice
 SHELL ["/bin/bash", "-c"]
 RUN . chipyardDocker/installMiniforge3.sh
 RUN . chipyardDocker/installCondaPacks.sh
-RUN . chipyardDocker/installChipyardWithTools.sh
 
 #make the entry ready
 ENTRYPOINT ["chipyardDocker/entrypoint.sh","/bin/bash"]
