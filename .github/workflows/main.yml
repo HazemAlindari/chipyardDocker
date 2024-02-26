@@ -2,7 +2,7 @@ name: Docker Image CI
 on: 
   push:
     branches:
-      - main
+      - ChipyardOneDevice
 jobs:
   build:
     runs-on: self-hosted
