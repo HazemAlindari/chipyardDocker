@@ -1,3 +1,5 @@
+<h2>Disclaimer</h2>
+<p>This is not a release from chipyard and should be built manually</p>
 <h3>Chipyard Docker</h3>
 <p>This docker image does setup chipyard (latest tag) with tools (except firesim and marshal, to install those too, simply remove --skip-firesim --skip-marshal from installChipyardWithTools.sh)</p>
 <a href="https://hub.docker.com/r/hazemjaki/chipyard">ChipyardDocker on Docker Hub</a>
